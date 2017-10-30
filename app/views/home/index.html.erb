@@ -1,5 +1,15 @@
 <h1>Elecciones 2018</h1>
-<h3><%= link_to 'Pages', '/pages' %></h3>
-<h3><%= link_to 'Posts', '/posts' %></h3>
-<h3><%= link_to 'Comments', '/comments' %></h3>
+
+<table>
+  <tr>
+    <td><%= link_to image_tag("page.ico"), '/pages' %></td>
+    <td><%= link_to image_tag("post.png"), '/posts' %></td>
+    <td><%= link_to image_tag("comment.jpg"), '/comments' %></td>
+  </tr>
+  <tr>
+    <td><h2><%= link_to 'Pages', '/pages' %></h2></td>
+    <td><h2><%= link_to 'Posts', '/posts' %></h2></td>
+    <td><h2><%= link_to 'Comments', '/comments' %></h2></td>
+  </tr>
+</table>
 
