@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <a href="https://facebook.com/<%= @post.id %>"><%= @post.id %></a>
+</p>
+
+<p>
+  <strong>Page:</strong>
+  <a href="<% request.domain %>/pages/<%= @post.page_id %>"><%= @post.page_id %></a>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @post.message %>
+</p>
+
+<p>
+  <strong>Story:</strong>
+  <%= @post.story %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @post.link %>
+</p>
+
+<p>
+  <strong>Created time:</strong>
+  <%= @post.created_time %>
+</p>
+
+<p>
+  <strong>Reactions:</strong>
+  <table class="table bordered condensed">
+    <thead>
+      <th>Date 📅</th>
+      <th>Like 👍</th>
+      <th>Love ❤️</th>
+      <th>Haha 😆</th>
+      <th>Angry 😠</th>
+      <th>Sad 😢</th>
+      <th>Thankful 🌸</th>
+      <th>Pride 🌈</th>
+    <thead>
+    <tbody>
+    <% @post.reactions.each do |reaction| %>
+      <tr>
+        <td><%= reaction['date'] %></td>
+        <td><%= reaction['like'] %></td>
+        <td><%= reaction['love'] %></td>
+        <td><%= reaction['haha'] %></td>
+        <td><%= reaction['angry'] %></td>
+        <td><%= reaction['sad'] %></td>
+        <td><%= reaction['thankful'] %></td>
+        <td><%= reaction['pride'] %></td>
+      <tr>
+    <% end %>
+    <tbody>
+  </table>
+</p>
+
+<%= link_to 'Post', '/posts' %>

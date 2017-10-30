@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: MyString
+  slug_id: MyString
+  name: MyString
+  fan_count: 
+
+two:
+  id: MyString
+  slug_id: MyString
+  name: MyString
+  fan_count: 

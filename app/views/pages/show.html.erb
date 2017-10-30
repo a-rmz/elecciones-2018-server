@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @page.id %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <a href="https://facebook.com/<%= @page.slug_id %>"><%= @page.slug_id %></a>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @page.name %>
+</p>
+
+<p>
+  <strong>Fan count:</strong>
+  <table class="table bordered condensed">
+    <thead>
+      <td><strong>Count</strong></td>
+      <td><strong>Date 📅</strong></td>
+    </thead>
+    <tbody>
+      <% @page.fan_count.each do |record| %>
+        <tr>
+          <td><%= record['count'] %></td>
+          <td><%= record['date'] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
+
+<%= link_to 'Back', pages_path %>

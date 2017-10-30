@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= link_to @comment.id, "https://facebook.com/#{ @comment.id}" %>
+</p>
+
+<p>
+  <strong>Post:</strong>
+  <%= link_to @comment.post_id, "/posts/#{@comment.post_id}" %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @comment.message %>
+</p>
+
+<p>
+  <strong>From:</strong>
+  <%= link_to @comment.from['name'], "https://facebook.com/#{@comment.from['id']}" %>
+</p>
+
+<p>
+  <strong>Reactions:</strong>
+  <table class="table bordered condensed">
+    <thead>
+      <th>Date 📅</th>
+      <th>Like 👍</th>
+      <th>Love ❤️</th>
+      <th>Haha 😆</th>
+      <th>Angry 😠</th>
+      <th>Sad 😢</th>
+      <th>Thankful 🌸</th>
+      <th>Pride 🌈</th>
+    <thead>
+    <tbody>
+    <% @comment.reactions.each do |reaction| %>
+      <tr>
+        <td><%= reaction['date'] %></td>
+        <td><%= reaction['like'] %></td>
+        <td><%= reaction['love'] %></td>
+        <td><%= reaction['haha'] %></td>
+        <td><%= reaction['angry'] %></td>
+        <td><%= reaction['sad'] %></td>
+        <td><%= reaction['thankful'] %></td>
+        <td><%= reaction['pride'] %></td>
+      <tr>
+    <% end %>
+    <tbody>
+  </table>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @comment.comments %>
+</p>
+
+<%= link_to 'Back', comments_path %>

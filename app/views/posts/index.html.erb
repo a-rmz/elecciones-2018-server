@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Page</th>
+      <th>Message</th>
+      <th>Story</th>
+      <th>Link</th>
+      <th>Created time</th>
+      <th>Reactions</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><a href="https://facebook.com/<%= post.id %>"><%= post.id %></a></td>
+        <td><%= link_to post.page_id, "pages/#{post.page_id}" %></td>
+        <td><%= post.message %></td>
+        <td><%= post.story %></td>
+        <td><%= post.link %></td>
+        <td><%= post.created_time %></td>
+        <td>
+          <table class="table bordered">
+            <thead>
+              <th>Like 👍</th>
+              <th>Love ❤️</th>
+              <th>Haha 😆</th>
+              <th>Angry 😠</th>
+              <th>Sad 😢</th>
+            <thead>
+            <tbody>
+            <% post.reactions.each do |reaction| %>
+              <tr>
+                <td><%= reaction['like'] %></td>
+                <td><%= reaction['love'] %></td>
+                <td><%= reaction['haha'] %></td>
+                <td><%= reaction['angry'] %></td>
+                <td><%= reaction['sad'] %></td>
+              <tr>
+            <% end %>
+            <tbody>
+          </table>
+        </td>
+        <td><%= link_to 'Show', post %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= paginate @posts %>
+<%= link_to 'Home', '/' %>

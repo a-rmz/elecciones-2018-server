@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Comments</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Post</th>
+      <th>Message</th>
+      <th>From</th>
+      <th>Reactions</th>
+      <th>Comments</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= link_to comment.id, "https://facebook.com/#{comment.id}"%></td>
+        <td><%= link_to comment.post_id, "/posts/#{comment.post_id}" %></td>
+        <td><%= comment.message %></td>
+        <td><%= link_to comment.from['name'], "https://facebook.com/#{comment.from['id']}" %></td>
+        <td>
+          <table class="table bordered">
+            <thead>
+              <th>Like 👍</th>
+              <th>Love ❤️</th>
+              <th>Haha 😆</th>
+              <th>Angry 😠</th>
+              <th>Sad 😢</th>
+            <thead>
+            <tbody>
+            <% comment.reactions.each do |reaction| %>
+              <tr>
+                <td><%= reaction['like'] %></td>
+                <td><%= reaction['love'] %></td>
+                <td><%= reaction['haha'] %></td>
+                <td><%= reaction['angry'] %></td>
+                <td><%= reaction['sad'] %></td>
+              <tr>
+            <% end %>
+            <tbody>
+          </table>
+        </td>
+        <td><%= comment.comments %></td>
+        <td><%= link_to 'Show', comment %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= paginate @comments %>
+<%= link_to 'New Comment', new_comment_path %>
